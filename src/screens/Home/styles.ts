@@ -20,16 +20,17 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
     gap: 12,
     marginTop: 36,
-    marginBottom: 42
+    marginBottom: 42,
+    alignItems: "center",
+    justifyContent: "center"
   },
   input: {
     flex: 1,
     backgroundColor: "#383838",
     color: "#FDFCFE",
-    fontSize: 18,
+    fontSize: 16,
     borderRadius: 8,
-    padding: 12,
-    marginTop: 12
+    padding: 16,
   },
   button: {
     width: 56,
@@ -38,8 +39,6 @@ export const styles = StyleSheet.create({
     backgroundColor: "#31CF67",
     justifyContent: "center",
     alignItems: "center",
-    padding: 12,
-    marginTop: 12
   },
   buttonText: {
     color: "#FDFCFE",
