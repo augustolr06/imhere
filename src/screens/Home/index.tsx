@@ -53,7 +53,7 @@ export function Home() {
             />
           )}
           ListEmptyComponent={() => (
-            <Text>
+            <Text style={styles.emptyListText} >
               Ninguém chegou ainda? Adicione participantes a sua lista de presença.
             </Text>
           )}
