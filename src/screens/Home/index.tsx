@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { View, Text, TextInput, TouchableOpacity, FlatList } from "react-native";
+import { View, Text, TextInput, TouchableOpacity, FlatList, Alert } from "react-native";
 import { Participant } from "../../components/Participant";
 
 import { styles } from "./styles";
@@ -7,13 +7,30 @@ import { styles } from "./styles";
 export function Home() {
 
   const [participants, setParticipants] = useState<string[]>([])
+  const [participantName, setParticipantName] = useState('')
 
   function handleParticipantAdd() {
-    setParticipants(prevState => [...prevState, ' novoParticipante'])
+    if (participantName === '') {
+      return Alert.alert('Você não digitou um nome','Digite um nome para adicionar a lista de presença')
+    }
+    if (participants.includes(participantName)) {
+      return;
+    }
+    setParticipants(prevState => [...prevState, participantName])
+    setParticipantName('')
   }
 
   function handleParticipantRemove(name: string) {
-    console.log(`Remover participante: ${name}`);
+    Alert.alert('Remover participante', `Tem certeza que deseja remover ${name} da lista de presença?`, [
+      {
+        text: 'Não',
+        style: 'cancel'
+      },
+      {
+        text: 'Sim',
+        onPress: () => setParticipants(prevState => prevState.filter(participant => participant !== name))
+      }
+    ])
   }
 
   return (
@@ -32,6 +49,8 @@ export function Home() {
             style={styles.input}
             placeholder="Digite seu nome"
             placeholderTextColor="#9C98A6"
+            value={participantName}
+            onChangeText={setParticipantName}
           />
           <TouchableOpacity
           style={styles.button}
