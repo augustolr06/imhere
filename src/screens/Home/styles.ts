@@ -4,7 +4,8 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#131016",
-    padding: 24
+    paddingHorizontal: 24,
+    paddingTop: 48,
   },
   eventName: {
     color: "#FDFCFE",
